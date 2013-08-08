@@ -1,0 +1,153 @@
+<script type="text/javascript" src="https://connect.facebook.net/en_US/all.js"></script>
+<script src="//connect.facebook.net/en_US/all.js"></script><!--colocar dentro do channel.html - problema cross browser-->
+<!--	
+	https://developers.facebook.com/docs/javascript/gettingstarted/
+--> 
+<!--
+	script para carregar e inicializar a SDK Javascript do Facebook
+    PS.: colocar dentro da tag <body>
+-->
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    // init the FB JS SDK
+    FB.init({
+      appId      : 'YOUR_APP_ID',                        // App ID from the app dashboard
+      channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel file for x-domain comms
+      status     : true,                                 // Check Facebook Login status
+      xfbml      : true                                  // Look for social plugins on the page
+    });
+    // Additional initialization code such as adding Event Listeners goes here
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!--
+	script para compartilhar
+-->
+<a id="btn-compartilhar" href="javascript:publish_to_wall();">compartilhar</a>
+<script>
+function publish_to_wall(){
+FB.ui(
+	{
+	method: 'feed',
+	name: 'Teste app #1', //nome do app
+	link: 'http://www.facebook.com/soares.fend/app_619805864718975', //url do app     
+	picture: 'http://lw135282612150a27459.provisorio.ws/icon_app.jpg', //url da imagem do icone do app
+	caption: 'App #1',
+	description: 'Teste de aplicativo',
+	message: ''
+	},
+	function(response){
+		if (response && response.post_id){
+		   alert('Post was published.');
+		}else{
+		   alert('Post was not published.');
+		}
+	}
+);
+
+};
+(function() {
+	var e = document.createElement('script'); e.async = true;
+	e.src = document.location.protocol +
+	'//connect.facebook.net/en_US/all.js#xfbml=1';
+	document.getElementById('fb-root').appendChild(e);
+}());
+</script>
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!--
+	script para corrigir problema da altura do app. Por padrão o app tem 800x800, passando disso cauda barra de rolagem.
+-->
+<script>
+(function($) {
+	$(document).ready(function(){
+		FB.Canvas.setSize({ width: 800, height: 800 });
+		FB.init({
+			appId : 'YOUR_APP_ID',
+			status : true, // check login status
+			cookie : true, // enable cookies to allow the server to access the session
+			xfbml : true, // parse XFBML
+			oauth: true,
+			channelUrl: '//WWW.YOUR_DOMAIN.COM/channel.html'
+		});
+		FB.Canvas.setAutoGrow();
+	})
+})(jQuery);
+</script>
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!--
+	script para convidar amigos
+-->
+<a id="btn-invite" href="javascript:inviteFriend();">convidar</a> 
+<script>
+function inviteFriend()
+{	
+	FB.ui
+	(
+		{
+			method: 'apprequests',
+			message: 'Conheça o app teste #1',
+			title: 'Teste de app'
+		},
+		function(response){
+			if (response && response.request_ids){
+			   //alert('convidou');
+			}else{
+			   //alert('nao convidou');
+			}
+		}		
+	)
+}
+(function(d){
+     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     d.getElementsByTagName('head')[0].appendChild(js);
+   }(document));
+</script>
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!--
+	script para enviar mensagem direta
+-->
+<a id="btn-message" href="javascript:sendMessage();">enviar mensagem</a>
+<script>
+//mensagem direta
+function sendMessage()
+{
+	FB.ui({
+	  method: 'send',
+	  link: 'http://www.google.com',
+	});	
+}
+(function(d){
+     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     d.getElementsByTagName('head')[0].appendChild(js);
+   }(document));
+</script>

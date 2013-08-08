@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Teste App #1</title>
+<link type="text/css" rel="stylesheet" href="style.css?v5">
+<script>
+//Compartilhar
+function publish_to_wall(){
+	FB.ui
+	(
+		{
+		method: 'feed',
+		name: 'Teste app #1',
+		link: 'http://www.facebook.com/soares.fend/app_619805864718975',
+		//picture: 'http://lw135282612150a27459.provisorio.ws/icon_app.jpg',
+		caption: 'App #1',
+		description: 'Teste de aplicativo',
+		message: ''
+		},
+		function(response){
+			if (response && response.post_id){
+			   //alert('Post was published.');
+			}else{
+			   //alert('Post was not published.');
+			}
+		}
+	);
+};
+(function() {
+	var e = document.createElement('script'); e.async = true;
+	e.src = document.location.protocol +
+	'//connect.facebook.net/en_US/all.js#xfbml=1';
+	document.getElementById('fb-root').appendChild(e);
+}());
+</script>
+<script>
+//convidar amigo
+function inviteFriend()
+{	
+	FB.ui
+	(
+		{
+			method: 'apprequests',
+			message: 'Conheça o app teste #1',
+			title: 'Teste de app'
+		},
+		function(response){
+			if (response && response.request_ids){
+			   //alert('convidou');
+			}else{
+			   //alert('nao convidou');
+			}
+		}
+		
+	)
+}
+(function(d){
+     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     d.getElementsByTagName('head')[0].appendChild(js);
+   }(document));
+</script>
+<script>
+//mensagem direta
+function sendMessage()
+{
+	FB.ui({
+	  method: 'send',
+	  link: 'http://www.google.com',
+	});	
+}
+(function(d){
+     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     d.getElementsByTagName('head')[0].appendChild(js);
+   }(document));
+</script>
+</head>
+<body>
+<!--
+	Script de inicialização da SDK
+-->
+<div id="fb-root"></div>
+<script>
+window.fbAsyncInit = function() {	
+	FB.Canvas.setSize({ width: 800, height: 900 });
+	FB.init({
+	  appId      : '619805864718975',
+	  channelUrl : '//estudiokmp.com.br/app-teste-1/channel.html',
+	  status     : true,                                 
+	  xfbml      : true                                  
+	});	
+};
+
+(function(d, s, id){
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) {return;}
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/en_US/all.js";
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+<div id="master-content-app">
+	<div id="logo-app"></div>
+    <div id="menu-app">
+    	<ul>
+        	<li>
+            	<a href="#">Menu 1</a>
+            </li>
+            <li>
+            	<a href="#">Menu 2</a>
+            </li>
+            <li>
+            	<a href="#">Menu 3</a>
+            </li>
+        </ul>	
+    </div>
+    <div id="texto-des-app">
+    	<p>
+        	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac ultrices mauris. Proin commodo dapibus urna vehicula tristique. Nunc a dictum turpis.
+            Fusce bibendum nunc euismod quam viverra, quis interdum tortor condimentum. Cras sed massa tincidunt, vestibulum eros ut, accumsan dui.
+            Donec enim mauris, posuere eu accumsan quis, lobortis eu lacus. Phasellus facilisis luctus dui. Nam a tincidunt orci, in congue ipsum. Nullam vulputate leo neque.
+        </p>	
+    </div>
+    
+    <div id="videos">
+    	<iframe width="740" height="350" src="http://www.youtube.com/embed/DkXQBSSM0ts" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <a id="btn-compartilhar" href="javascript:publish_to_wall();">compartilhar</a>
+    <br>
+    <a id="btn-invite" href="javascript:inviteFriend();">convidar</a>
+    <br>
+    <a id="btn-message" href="javascript:sendMessage();">enviar mensagem</a>    
+</div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{padding:0;margin:0;}
+
+#master-content-app{
+position:relative;
+margin:0 auto;
+width:800px;
+height:800px;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+#logo-app{
+width:300px;
+height:142px;
+background:#2e2e2e;	
+position:relative;
+left:50%;
+margin-left:-150px;
+top:10px;
+}
+
+#menu-app{
+width:400px;
+position:relative;
+left:50%;
+margin-left:-182px;
+top:45px;
+}
+
+#menu-app ul{
+margin-left:-100px;	
+}
+
+#menu-app ul li{
+display:inline;
+margin-left:100px;
+}
+
+#menu-app ul li a{
+text-decoration:none;
+color:#2e2e2e;
+font-size:16px;
+}
+
+#texto-des-app{
+position:relative;
+top:70px;	
+padding:20px;
+}
+
+#texto-des-app p{
+font-size:16px;
+color:#2e2e2e;	
+}
+
+#videos{
+position:relative;
+width:745px;
+top:100px;
+left:20px;	
+}
+
+#videos iframe{
+position:relative;
+left:2px;	
+}
+
+#btn-compartilhar{
+position:relative;
+top:110px;
+left:20px;
+}
+
+#btn-invite{
+position:relative;
+top:112px;
+left:20px;	
+}
+
+#btn-message{
+position:relative;
+top:112px;
+left:20px;	
+}
